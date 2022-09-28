@@ -16,8 +16,16 @@ class IndexModel:
             t = dt.datetime.strptime(date[i],'%d/%m/%Y')
             if t.date() == start_date:
                 start_index = i
+            elif t.date() != start_date and (t+dt.timedelta(days=1)).date() == start_date:
+                start_index = i+1
+            elif t.date() != start_date and (t+dt.timedelta(days=2)).date() == start_date:
+                start_index = i+1
             if t.date() == end_date:
                 end_index = i
+            elif t.date() != end_date and (t+dt.timedelta(days=1)).date() == end_date:
+                end_index = i+1
+            elif t.date() != end_date and (t+dt.timedelta(days=2)).date() == end_date:
+                end_index = i+1
         
         '''
         Get the top three stocks

@@ -48,7 +48,19 @@ class IndexModel:
             stock3.append(s3)
             month = t.month
             
-        
+        '''
+        Calculate Index
+        '''
+        stock_index = []
+        for i in range (start_index, end_index+1):
+            if i == start_index:
+                index_value = 100
+            elif i > start_index:
+                total_return =  0.5*(stock_prices[stock1[i]][i]/stock_prices[stock1[i]][i-1]-1) + \
+                                0.25* (stock_prices[stock2[i]][i]/stock_prices[stock2[i]][i-1]-1) + \
+                                0.25* (stock_prices[stock3[i]][i]/stock_prices[stock3[i]][i-1]-1)
+                index_value = index_value * (1+total_return)
+            stock_index.append(round(index_value,2))
 
     def export_values(self, file_name: str) -> None:
         # To be implemented

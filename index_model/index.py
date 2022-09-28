@@ -61,6 +61,13 @@ class IndexModel:
                                 0.25* (stock_prices[stock3[i]][i]/stock_prices[stock3[i]][i-1]-1)
                 index_value = index_value * (1+total_return)
             stock_index.append(round(index_value,2))
+        
+        '''
+        save file
+        '''
+        final_data ={'Date':date.tolist()[start_index:end_index+1],
+                     'index_level':stock_index}
+        self.stock_index = pd.DataFrame(final_data)
 
     def export_values(self, file_name: str) -> None:
         # To be implemented

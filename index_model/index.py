@@ -69,6 +69,5 @@ class IndexModel:
                      'index_level':stock_index}
         self.stock_index = pd.DataFrame(final_data)
 
-    def export_values(self, file_name: str) -> None:
-        # To be implemented
-        pass
+    def export_values(self, file_name: str):
+        self.stock_index.to_csv(file_name, index=False)
